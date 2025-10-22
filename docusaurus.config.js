@@ -156,6 +156,20 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+    
+  // 🪄 Custom plugin a CNAME fájlhoz
+  plugins: [
+    async function createCNAME() {
+      return {
+        name: 'create-cname-plugin',
+        async postBuild({ outDir }) {
+          const fs = require('fs');
+          fs.writeFileSync(`${outDir}/CNAME`, 'winix.top');
+          console.log('✅ CNAME file created for winix.top');
+        },
+      };
+    },
+  ],
 };
 
 export default config;
