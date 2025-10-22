@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - 'src/**'
+      - 'blog/**'
+      - 'static/**'
+      - 'docusaurus.config.js'
+      - 'package.json'
+      - 'sidebars.js'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   deploy:
@@ -19,6 +28,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -31,7 +41,7 @@ jobs:
           git config --global user.name "verebtamas"
           git config --global user.email "verebtamas@users.noreply.github.com"
 
-            - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         env:
           GIT_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,4 +49,3 @@ jobs:
           git config --global credential.helper store
           echo "https://${GITHUB_TOKEN}@github.com" > ~/.git-credentials
           npx docusaurus deploy
-
