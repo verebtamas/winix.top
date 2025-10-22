@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwinix_top=globalThis.webpackChunkwinix_top||[]).push([[2982],{822:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/winix.top/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
