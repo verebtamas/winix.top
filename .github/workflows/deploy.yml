@@ -31,8 +31,12 @@ jobs:
           git config --global user.name "verebtamas"
           git config --global user.email "verebtamas@users.noreply.github.com"
 
-      - name: Deploy to GitHub Pages
+            - name: Deploy to GitHub Pages
         env:
           GIT_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx docusaurus deploy
+        run: |
+          git config --global credential.helper store
+          echo "https://${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+          npx docusaurus deploy
+
